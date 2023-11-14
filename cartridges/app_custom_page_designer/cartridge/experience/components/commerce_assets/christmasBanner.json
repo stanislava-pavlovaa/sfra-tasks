@@ -1,0 +1,54 @@
+{
+    "name": "Christmas Banner",
+    "description": "Banner, containing title, image as background of the entire component, short description and CTA",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+      {
+        "id": "bannerImage",
+        "name": "Banner Image",
+        "description": "The visual display of the banner image in the background.",
+        "attribute_definitions": [
+          {
+            "id": "image",
+            "name": "Image",
+            "type": "image",
+            "required": true
+          },
+          {
+            "id": "alt",
+            "name": "Banner Image Alt Text",
+            "description": "The image alt text.",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      {
+        "id": "textOverlay",
+        "name": "Text Overlay",
+        "description": "The overlay text on top of the banner image.",
+        "attribute_definitions": [
+          {
+            "id": "title",
+            "name": "Title",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "description",
+            "name": "Short Description",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "categoryLink",
+            "name": "Category Link",
+            "type": "category",
+            "required": true
+          }
+        ]
+      }
+    ],
+    "region_definitions": []
+  }
+  
