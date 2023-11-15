@@ -4,6 +4,7 @@ var server = require("server");
 server.extend(module.superModule);
 
 server.append("Show", function (req, res, next) {
+    var Resource = require('dw/web/Resource');
     var ContentMgr = require("dw/content/ContentMgr");
     var asset = ContentMgr.getContent("product-information");
 
@@ -15,7 +16,7 @@ server.append("Show", function (req, res, next) {
             var shippingInfo = viewData.product.shipping;
             assetBody = assetBody.replace("{shipping}", shippingInfo);
         } else {
-            assetBody = assetBody.replace("{shipping}", "No additional information about shipping");
+            assetBody = assetBody.replace("{shipping}", Resource.msg('shipping.no.information', 'product', null));
         }
 
         viewData.assetBody = assetBody;
