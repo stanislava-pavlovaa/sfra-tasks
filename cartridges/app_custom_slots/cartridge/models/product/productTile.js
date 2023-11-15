@@ -1,7 +1,6 @@
 'use strict';
 
 var decorators = require('*/cartridge/models/product/decorators/index');
-var promotionCache = require('*/cartridge/scripts/util/promotionCache');
 
 var base = module.superModule;
 
