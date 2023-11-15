@@ -13,16 +13,17 @@ var Site = require('dw/system/Site');
  * @returns {void}
  */
 
-function sendConfirmationEmail(order, locale, products) {
+function sendConfirmationEmail(order, locale) {
     var OrderModel = require('*/cartridge/models/order');
     var emailHelpers = require('*/cartridge/scripts/helpers/emailHelpers');
+    var products = require('*/cartridge/scripts/helpers/exclusiveProductsHelper');
     var Locale = require('dw/util/Locale');
 
     var currentLocale = Locale.getLocale(locale);
 
     var orderModel = new OrderModel(order, { countryCode: currentLocale.country, containerView: 'order' });
 
-    var orderObject = { order: orderModel, products: products  };
+    var orderObject = { order: orderModel, products: products.getExclusiveProducts()};
 
     var emailObj = {
         to: order.customerEmail,

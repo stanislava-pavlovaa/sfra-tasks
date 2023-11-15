@@ -8,8 +8,9 @@ var URLUtils = require('dw/web/URLUtils');
  * Send an email that would notify the user that account was created
  * @param {obj} registeredUser - object that contains user's email address and name information.
  */
-function sendCreateAccountEmail(registeredUser, products) {
+function sendCreateAccountEmail(registeredUser) {
     var emailHelpers = require('*/cartridge/scripts/helpers/emailHelpers');
+    var products = require('*/cartridge/scripts/helpers/exclusiveProductsHelper');
     var Site = require('dw/system/Site');
     var Resource = require('dw/web/Resource');
 
@@ -17,7 +18,7 @@ function sendCreateAccountEmail(registeredUser, products) {
         email: registeredUser.email,
         firstName: registeredUser.firstName,
         lastName: registeredUser.lastName,
-        products: products,
+        products: products.getExclusiveProducts(),
         url: URLUtils.https('Login-Show')
     };
 

@@ -172,7 +172,7 @@
 
     <!--- Exclusive products --->
     <div>
-        <h3>Exclusive products:</h3>
+        <h3> ${Resource.msg('label.exclusive.products.heading', 'confirmation', null)}::</h3>
         <isloop items="${pdict.products}" var="product" status="loopState">
             ${Resource.msg('label.exclusive.product.name', 'confirmation', null)}:
             ${product.name} 
