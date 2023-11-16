@@ -6,7 +6,7 @@
 
     <p><a href="${pdict.url}">${pdict.url}</a></p>
 
-    <h3>Exclusive products:</h3>
+    <h3>${Resource.msg('label.exclusive.products', 'registration', null)}:</h3>
 
     <isloop items="${pdict.products}" var="product" status="loopState">
         <p>${Resource.msg('label.exclusive.product.name', 'registration', null)}: ${product.name} </p>
