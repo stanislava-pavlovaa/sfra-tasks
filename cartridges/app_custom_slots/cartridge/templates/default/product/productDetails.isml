@@ -127,9 +127,9 @@
                         <isinclude template="product/components/addToCartProduct" />
                     </div>
 
-                    <isif condition="${!empty(pdict.assetBody)}">
+                    <isif condition="${!empty(pdict.shippingInfo)}">
                         <div class="row mt-2">
-                            <isprint value="${pdict.assetBody}" encoding="off" />
+                            <isprint value="${pdict.shippingInfo}" encoding="off" />
                         </div>
                     </isif> 
 
