@@ -5,7 +5,7 @@
  */
 
 function getExclusiveProducts() {
-    var ProductMgr = require('dw/catalog/ProductMgr');
+    var ProductFactory = require('*/cartridge/scripts/factories/product');
     var ContentMgr = require("dw/content/ContentMgr");
     var asset = ContentMgr.getContent("exclusive-products");
 
@@ -16,8 +16,8 @@ function getExclusiveProducts() {
 
         var products = [];
 
-        productIDs.forEach(el => {
-            products.push(ProductMgr.getProduct(el));
+        productIDs.forEach(id => {
+            products.push(ProductFactory.get({pid: id, pview: 'tile'}));
         });
         return products;
     }

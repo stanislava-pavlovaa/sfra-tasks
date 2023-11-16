@@ -175,7 +175,7 @@
         <h3> ${Resource.msg('label.exclusive.products.heading', 'confirmation', null)}::</h3>
         <isloop items="${pdict.products}" var="product" status="loopState">
             ${Resource.msg('label.exclusive.product.name', 'confirmation', null)}:
-            ${product.name} 
+            ${product.productName} 
             <br/>
             ${Resource.msg('label.exclusive.product.short.description', 'confirmation', null)}:
             ${product.shortDescription}
