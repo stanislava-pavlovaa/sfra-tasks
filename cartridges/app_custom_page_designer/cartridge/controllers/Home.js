@@ -12,10 +12,14 @@ server.append("Show", function (req, res, next) {
 
         pageMetaHelper.setPageMetaTags(req.pageMetaData, Site.current);
 
-        var page = PageMgr.getPage("christmas-homepage");
+        var pdPreferenceValue = Site.getCurrent().getCustomPreferenceValue("enableChristmasHomepage");
+
+        if (pdPreferenceValue) {
+            var page = PageMgr.getPage(pdPreferenceValue);
+        }
 
         if (page && page.isVisible()) {
-            res.page("christmas-homepage");
+            res.page(pdPreferenceValue);
         } else {
             res.render("home/homePage");
         }

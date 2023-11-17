@@ -16,7 +16,7 @@
                     "required": true
                 },
                 {
-                    "id": "catDescription",
+                    "id": "categoryDescription",
                     "name": "Category Description",
                     "description": "Write a short description.",
                     "type": "string",

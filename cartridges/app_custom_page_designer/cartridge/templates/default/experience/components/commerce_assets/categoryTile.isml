@@ -1,15 +1,10 @@
 <isscript>
     var assets = require('*/cartridge/scripts/assets.js');
     assets.addCss('/css/experience/components/commerceAssets/popularCategory.css');
+    assets.addCss('/css/experience/components/commerceAssets/categoryTile.css');
 </isscript>
 
-<isif condition="${pdict.category.ctaPosition == "top"}">
-    <div class="popular-category-link">
-        <a href="${pdict.category.url}" class="popular-category-label-a popular-cat-link">${pdict.category.ctaTitle}</a>
-    </div>
-</isif>
-
-<div class="mt-2">
+<div class="mt-2 tile-container">
     <div class="image-cropper">
         <a href="${pdict.category.url}">
             <isif condition="${pdict.image}">
@@ -40,8 +35,8 @@
                         background-position: center center; background-size: cover;"
                     </isif>
                  >
-                <span class="background-image" role="img" aria-label="${pdict.category.name}"></span>
-            </div>
+                    <span class="background-image" role="img" aria-label="${pdict.category.name}"></span>
+                </div>
             </isif>
         </a>
     </div>
@@ -49,10 +44,8 @@
     <div class="text-center my-1">
         <span>${pdict.category.description}</span>
     </div>
-</div>
 
-<isif condition="${pdict.category.ctaPosition == "bottom"}">
-    <div class="popular-category-link">
+    <div class="text-center my-1 cta-link ${pdict.category.ctaPosition == "bottom" ? 'bottom' : 'top'}">
         <a href="${pdict.category.url}" class="popular-category-label-a popular-cat-link">${pdict.category.ctaTitle}</a>
     </div>
-</isif>
+</div>

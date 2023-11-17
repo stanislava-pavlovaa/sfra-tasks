@@ -1,0 +1,18 @@
+.tile-container {
+    position: relative;
+}
+
+.cta-link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bottom {
+    margin-top: 1rem !important;
+    bottom: -1rem;
+}
+
+.top {
+    top: 0;
+}

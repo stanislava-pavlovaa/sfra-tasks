@@ -24,8 +24,8 @@ module.exports.render = function (context, modelIn) {
         catObj.ID = cat.ID;
         catObj.compID = context.component.ID;
 
-        if (content.catDescription) {
-            catObj.description = content.catDescription;
+        if (content.categoryDescription) {
+            catObj.description = content.categoryDescription;
         } else {
             catObj.description = cat.description;
         }
