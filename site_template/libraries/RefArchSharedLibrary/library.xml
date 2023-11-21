@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
+    <content content-id="hero-slider-image-1">
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;&lt;img alt="Image 1" height="300" src="images/myaccount_addresses.png?$staticlink$" title="" width="300" /&gt;&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+
+    <content content-id="hero-slider-image-2">
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;&lt;img alt="Image 2" height="300" src="images/myaccount_orders.png?$staticlink$" title="" width="300" /&gt;&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+
+    <content content-id="hero-slider-image-3">
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;&lt;img alt="Image 3" height="300" src="images/myaccount_payment.png?$staticlink$" title="" width="300" /&gt;&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+
+ <content content-id="product-information">
+        <display-name xml:lang="x-default">Product Information</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>true</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;{shipping}&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+</library>
