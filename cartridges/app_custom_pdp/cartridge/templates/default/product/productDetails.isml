@@ -56,7 +56,7 @@
                                 </a>
                             </p>
                         <iselse/>
-                            <p><isprint value="${product.shortDescription}" encoding="off" /></p>
+                            <p><isprint value="${product.shortDescription}" encoding="on" /></p>
                         </isif>
                     </div>
                 </div>
@@ -71,12 +71,12 @@
                     <isloop items="${product.variationAttributes}" var="attr" status="attributeStatus">
                         <isif condition="${attr.id == 'size'}">
                             <div class="row size-area" data-attr="${attr.id}">
-                                <div class="col-12">
+                                <div class="col-4">
                                     <isinclude template="product/components/variationAttribute" />
                                 </div>
 
                                 <!-- Size Chart -->
-                                <div class="col-12">
+                                <div class="col-8">
                                     <isif condition="${product.variationAttributes && product.sizeChartId}">
                                         <div class="size-chart">
                                             <isinclude template="product/components/sizeChart" />
@@ -137,13 +137,11 @@
                 context-object="${pdict.product.raw}" />
         </div>
 
-        <isset name="loopState" value="${{
-                                       count: 1}}" scope="page" />
-        <isinclude template="product/components/descriptionAndDetails" />
+        <isset name="loopState" value="${{count: 1}}" scope="page" />
+        <isinclude template="product/components/detailsAndDelivery" />
 
         <div class="recommendations">
-            <isslot id="product-recommendations-m" description="Recommended products" context="global"
-                context-object="${pdict.product.raw}" />
+            <isinclude template="product/components/recommendationsCarousel" />
         </div>
     </div>
     </isobject>

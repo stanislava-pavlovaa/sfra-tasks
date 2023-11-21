@@ -1,0 +1,31 @@
+<div class="description-and-detail">
+    <div class="row details collapsible-xs <isif condition="${!product.longDescription}">hidden-xl-down</isif>">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <button class="title btn text-left btn-block d-sm-none"
+                    aria-expanded="false" aria-controls="collapsible-details-${loopState && loopState.count ? loopState.count : '1' }"
+            >
+                ${Resource.msg('label.details', 'product', null)}
+            </button>
+            <h2 class="title d-none d-sm-block">
+                ${Resource.msg('label.details', 'product', null)}
+            </h2>
+        </div>
+
+        <isinclude template="product/components/details" />
+    </div>
+    
+    <div class="row details collapsible-xs mt-3">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <button class="title btn text-left btn-block d-sm-none"
+                    aria-expanded="false" aria-controls="collapsible-details-${loopState && loopState.count ? loopState.count : '1' }"
+            >
+                ${Resource.msg('label.delivery', 'product', null)}
+            </button>
+            <h2 class="title d-none d-sm-block">
+                ${Resource.msg('label.delivery', 'product', null)}
+            </h2>
+        </div>
+
+        <isinclude template="product/components/delivery" />
+    </div>
+</div>
