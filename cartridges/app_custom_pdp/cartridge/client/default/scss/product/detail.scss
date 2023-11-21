@@ -5,6 +5,28 @@
 @import "~base/utilities/responsiveUtils";
 @import "~base/utilities/swatch";
 
+.carousel-inner {
+    .carousel-item.active,
+    .carousel-item-next,
+    .carousel-item-prev {
+        display: flex;
+    }
+    
+    .carousel-item-right.active,
+    .carousel-item-next {
+        transform: translateX(25%);
+    }
+    
+    .carousel-item-left.active,
+    .carousel-item-prev {
+        transform: translateX(-25%);
+    }
+    
+    .carousel-item-right,
+    .carousel-item-left {
+        transform: translateX(0);
+    }
+}
 
 .size-buttons {
     overflow: auto;
