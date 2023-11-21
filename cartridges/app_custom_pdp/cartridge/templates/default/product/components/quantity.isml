@@ -1,7 +1,7 @@
 <isscript>
-        var assets = require('*/cartridge/scripts/assets');
-        assets.addJs('/js/quantityPDP.js');
-    </isscript>
+    var assets = require('*/cartridge/scripts/assets');
+    assets.addJs('/js/quantityPDP.js');
+</isscript>
 
 <div class="col-8">
     <label for="quantity">${Resource.msg('label.quantity', 'common', null)}</label>
@@ -9,8 +9,8 @@
 
 <div class="col-4 d-flex">
     <button type="button" id="decrease" class="btn rounded-circle border-secondary"><i class="fa fa-minus text-secondary"></i></button>
-     
-    <select class="quantity-select custom-select form-control mx-2" id="quantity">
+
+    <select class="quantity-select custom-select form-control mx-2 border-0" id="quantity">
         <isloop items="${product.quantities}" var="quantity">
             <option value="${quantity.value}"
                     <isif condition="${product.productType !== 'bundle'}">data-url="${quantity.url}"</isif>

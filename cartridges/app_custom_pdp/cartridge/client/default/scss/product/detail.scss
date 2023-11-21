@@ -29,9 +29,15 @@
 }
 
 .size-buttons {
-    overflow: auto;
-    border: none;
     height: 3em;
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+    
+    &:focus {
+        outline: none;
+    }
 }
 
 .quantity-select select::-ms-expand {
@@ -55,6 +61,12 @@
 label.color~a:hover {
     // Removes weird dash after the swatch circle on hover.
     text-decoration: none;
+}
+
+.product-description {
+    @include media-breakpoint-up(sm) {
+        margin-bottom: 0.625em; 
+    }
 }
 
 .description-and-detail {
@@ -94,15 +106,8 @@ label.availability {
 }
 
 @include media-breakpoint-up(sm) {
-    .product-number-rating {
-        border-bottom: 1px solid $hr-border-color;
-    }
-}
-
-
-@include media-breakpoint-only(sm) {
-
-    .product-name,
+    .product-number-rating,
+    .product-description,
     .size-area {
         border-bottom: 1px solid $hr-border-color;
     }
@@ -112,6 +117,7 @@ label.availability {
 
     @include media-breakpoint-up(sm) {
         margin-top: 0.625em;
+        margin-bottom: 0.625em;
     }
 
     @include media-breakpoint-only(xs) {

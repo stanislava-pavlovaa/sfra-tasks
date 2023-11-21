@@ -7,6 +7,7 @@
     </isscript>
 
     <isset name="product" value="${pdict.product}" scope="page" />
+    <isset name="finalOrigPrice" value="${product.price}" scope="page" />
     <isset name="isQuickView" value="${false}" scope="page" />
     <isset name="isProductSet" value="${pdict.product.productType === 'set'}" scope="page" />
     <isobject object="${product.raw}" view="detail" />
@@ -22,6 +23,14 @@
             <isinclude template="product/components/imageCarousel" />
 
             <div class="col-12 col-sm-6">
+                <isif condition="${finalOrigPrice.list !== null}">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="text-success font-weight-bold">${Resource.msg('product.sale', 'product', null)}</h5>
+                        </div>
+                    </div>
+                </isif>
+
                 <!-- Product Name -->
                 <div class="row">
                     <div class="col">
@@ -49,14 +58,14 @@
                 <div class="row mt-2">
                     <div class="col-12">
                         <isif condition="${product.shortDescription.length > 100}">
-                            <p class="d-inline">${product.shortDescription.substring(0, 100)} ${Resource.msg('description.ellipsis', 'product', null)}
+                            <p class="product-description pb-2">${product.shortDescription.substring(0, 100)} ${Resource.msg('description.ellipsis', 'product', null)}
                                 <span class="collapse" id="viewDetails">${product.shortDescription.substring(100, product.shortDescription.length)}</span>
                                 <a href="#viewDetails" data-toggle="collapse" aria-expanded="false" aria-controls="viewDetails">
                                     ${Resource.msg('description.view.details', 'product', null)}
                                 </a>
                             </p>
                         <iselse/>
-                            <p><isprint value="${product.shortDescription}" encoding="on" /></p>
+                            <p class="product-description pb-2"><isprint value="${product.shortDescription}" encoding="on" /></p>
                         </isif>
                     </div>
                 </div>
@@ -74,7 +83,6 @@
                                 <div class="col-4">
                                     <isinclude template="product/components/variationAttribute" />
                                 </div>
-
                                 <!-- Size Chart -->
                                 <div class="col-8">
                                     <isif condition="${product.variationAttributes && product.sizeChartId}">
