@@ -41,8 +41,8 @@
 
         <iselse>
             <!-- Select <Attribute> Label -->
-            <label class="${attr.id}" for="${attr.id}-${loopState && loopState.count ? loopState.count : '1'}">
-                ${Resource.msg('label.select', 'common', null)} ${attr.displayName}
+            <label class="${attr.id} font-weight-bold" for="${attr.id}-${loopState && loopState.count ? loopState.count : '1'}">
+                ${attr.displayName}
             </label>
 
             <select class="size-buttons select-${attr.id}" multiple>
