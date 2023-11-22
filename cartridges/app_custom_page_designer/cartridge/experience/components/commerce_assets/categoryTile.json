@@ -1,0 +1,50 @@
+{
+    "name": "Category Tile",
+    "description": "Category Tile displayed with a image.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "categoryTile",
+            "name": "Category Tile",
+            "description": "Specify the Category to be Displayed.",
+            "attribute_definitions": [
+                {
+                    "id": "category",
+                    "name": "Category",
+                    "description": "Select Category to be displayed.",
+                    "type": "category",
+                    "required": true
+                },
+                {
+                    "id": "categoryDescription",
+                    "name": "Category Description",
+                    "description": "Write a short description.",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                   "id": "image",
+                   "name": "Image",
+                   "type": "image",
+                   "required": false
+                },             
+                {
+                    "id": "ctaTitle",
+                    "name": "Call To Action Title",
+                    "description": "Text for the CTA",
+                    "type": "string",
+                    "required": true
+                },                
+                {
+                    "id": "ctaPosition",
+                    "name": "Call To Action Position",
+                    "description": "Set where to position CTA",
+                    "type": "enum",
+                    "values": ["top", "bottom"],
+                    "required": true
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}
