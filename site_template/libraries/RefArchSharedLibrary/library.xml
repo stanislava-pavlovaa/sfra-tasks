@@ -27,13 +27,22 @@
         </custom-attributes>
     </content>
 
- <content content-id="product-information">
+    <content content-id="product-information">
         <display-name xml:lang="x-default">Product Information</display-name>
         <online-flag>true</online-flag>
         <searchable-flag>true</searchable-flag>
         <page-attributes/>
         <custom-attributes>
             <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;{shipping}&lt;/p&gt;</custom-attribute>
+        </custom-attributes>
+    </content>
+    <content content-id="promotional-message">
+        <display-name xml:lang="x-default">Promotional message bellow add to bag button</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>false</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">Special offers available</custom-attribute>
         </custom-attributes>
     </content>
 </library>
