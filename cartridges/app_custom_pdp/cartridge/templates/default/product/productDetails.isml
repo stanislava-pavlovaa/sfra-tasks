@@ -116,13 +116,7 @@
                         <isinclude template="product/components/addToCartProduct" />
                     </div>
 
-                    <isif condition="${!empty(pdict.promoMessage)}">
-                        <div class="row mt-3">
-                            <div class="col-sm-12 text-sm-right">
-                                <isprint value="${pdict.promoMessage}" encoding="off" />
-                            </div>
-                        </div>
-                    </isif>
+                    <iscontentasset aid="promotional-message" />
 
                     <div class="product-options">
                         <isif condition="${product.options && product.options.length > 0}">
