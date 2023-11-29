@@ -1,0 +1,27 @@
+<div class="add-to-cart-messages">
+</div>
+<div class="mt-3">
+    <form action="${URLUtils.url('Product-Subscribe')}" class="subscriptionForm row" method="POST" encoding="off" <isprint value="${pdict.outOfStockForm.attributes}"/>>
+        <div class="form-group required col-sm-8">
+            <input 
+                type="tel" 
+                id="phone" 
+                class="form-control required" 
+                placeholder="${Resource.msg('input.placeholder.phone.subscribe', 'subscription', null)}"
+                required
+                aria-required="true" 
+                value="${pdict.phone}" 
+                <isprint value="${pdict.outOfStockForm.phone.attributes}" encoding="off"/>>
+            <div class="invalid-feedback"></div>
+        </div>
+
+        <input type="hidden" id="productID" class="subscriptionProductId" value="${product.id}" <isprint
+            value="${pdict.outOfStockForm.productID.attributes}" encoding="off" />>
+
+        <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+
+        <div class="col-sm-4">
+            <button type="submit" name="save" class="btn btn-save btn-success">${Resource.msg('button.save', 'subscription', null)}</button>
+        </div>
+    </form>
+</div>
