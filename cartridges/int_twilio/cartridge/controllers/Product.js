@@ -6,8 +6,6 @@ server.extend(module.superModule);
 var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
 
 server.append("Show", function (req, res, next) {
-    var ProductMgr = require('dw/catalog/ProductMgr');
-
     var viewData = res.getViewData();
 
     var outOfStockForm = server.forms.getForm("outOfStock");
@@ -45,8 +43,7 @@ server.post(
         var URLUtils = require("dw/web/URLUtils");
         var outOfStockForm = server.forms.getForm("outOfStock");
         var OUT_OF_STOCK_SUBSCRIPTION_CO = "OUT_OF_STOCK_SUBSCRIPTION";
-        
-        
+
         if (outOfStockForm.valid) {
             var subscriptionEntry = CustomObjectMgr.getCustomObject(OUT_OF_STOCK_SUBSCRIPTION_CO, outOfStockForm.productID.value);
 
@@ -54,6 +51,11 @@ server.post(
                 if (!subscriptionEntry) {
                     subscriptionEntry = CustomObjectMgr.createCustomObject(OUT_OF_STOCK_SUBSCRIPTION_CO, outOfStockForm.productID.value);
                     subscriptionEntry.custom.phoneNumbers = [outOfStockForm.phone.value];
+                    res.json({
+                        success: true,
+                        error: false,
+                        msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
+                    })
                 } else {
                     var phoneNumbersArray = Array.from(subscriptionEntry.custom.phoneNumbers);
                     var currentPhone = outOfStockForm.phone.value;
