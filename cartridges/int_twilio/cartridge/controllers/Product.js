@@ -37,45 +37,32 @@ server.post(
     server.middleware.https,
     csrfProtection.validateAjaxRequest,
     function (req, res, next) {
-        var CustomObjectMgr = require("dw/object/CustomObjectMgr");
         var Resource = require("dw/web/Resource");
-        var Transaction = require("dw/system/Transaction");
-        var URLUtils = require("dw/web/URLUtils");
+        var addToCOHelper = require('*/cartridge/scripts/helpers/addToCOHelper');
         var outOfStockForm = server.forms.getForm("outOfStock");
-        var OUT_OF_STOCK_SUBSCRIPTION_CO = "OUT_OF_STOCK_SUBSCRIPTION";
 
         if (outOfStockForm.valid) {
-            var subscriptionEntry = CustomObjectMgr.getCustomObject(OUT_OF_STOCK_SUBSCRIPTION_CO, outOfStockForm.productID.value);
+            var addToCOResponse = addToCOHelper.addToCO(outOfStockForm.productID.value, outOfStockForm.phone.value);
 
-            Transaction.wrap(function () {
-                if (!subscriptionEntry) {
-                    subscriptionEntry = CustomObjectMgr.createCustomObject(OUT_OF_STOCK_SUBSCRIPTION_CO, outOfStockForm.productID.value);
-                    subscriptionEntry.custom.phoneNumbers = [outOfStockForm.phone.value];
-                    res.json({
-                        success: true,
-                        error: false,
-                        msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
-                    })
-                } else {
-                    var phoneNumbersArray = Array.from(subscriptionEntry.custom.phoneNumbers);
-                    var currentPhone = outOfStockForm.phone.value;
-                    if (phoneNumbersArray.includes(currentPhone)) {
-                        res.json({
-                            success: false,
-                            error:true,
-                            errorMessage: Resource.msg('error.message.already.subscribed', 'subscription', null)
-                        })
-                    } else {
-                        phoneNumbersArray.push(currentPhone);
-                        subscriptionEntry.custom.phoneNumbers = phoneNumbersArray
-                        res.json({
-                            success: true,
-                            error: false,
-                            msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
-                        })
-                    }
-                }
-            });
+            if (addToCOResponse.success && addToCOResponse.createdObject) {
+                res.json({
+                    success: true,
+                    error: false,
+                    msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
+                })
+            }  else if (addToCOResponse.success && !addToCOResponse.phoneExists) {
+                res.json({
+                    success: true,
+                    error: false,
+                    msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
+                })
+            } else if(!addToCOResponse.success && addToCOResponse.phoneExists){
+                res.json({
+                    success: false,
+                    error:true,
+                    errorMessage: Resource.msg('error.message.already.subscribed', 'subscription', null)
+                })
+            }
         } else {
             res.json({
                     success: false,

@@ -10,7 +10,7 @@
         missing-error="error.card.info.missing.phone" 
         range-error="error.message.between10and20" 
 		parse-error="error.message.parse.phone.profile.form"
-        regexp="^[0-9\(\)\s\+\-]+$"  />
+        regexp="^\+\d+[\d\s\(\)\-]+$"  />
 
     <field 
         formid="productID" 

@@ -40,7 +40,8 @@ cartridges/app_custom_pdp/cartridge/static/default/css/
 cartridges/app_custom_pdp/cartridge/static/default/js/
 cartridges/app_custom_pdp/cartridge/static/default/fonts/
 
-cartridges/int_twilio/cartridge/static/
+cartridges/int_twilio/cartridge/static/default/js
+cartridges/int_twilio/cartridge/static/default/css
 
 coverage/
 npm-debug.log

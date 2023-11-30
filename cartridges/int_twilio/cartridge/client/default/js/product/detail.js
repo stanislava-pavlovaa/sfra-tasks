@@ -3,8 +3,6 @@ var base = require('base/product/detail');
 
 base.updateAttribute = function () {
     $('body').on('product:afterAttributeSelect', function (e, response) {
-        console.log(response);
-
         if (response.data.product.available) {
             $('.add-to-cart').removeClass('d-none');
             $('.product-subscription').addClass('d-none');
@@ -14,7 +12,6 @@ base.updateAttribute = function () {
         }
 
         $('.subscriptionProductId').val(response.data.product.id);
-        console.log($('.subscriptionProductId').val());
 
         if ($('.product-detail>.bundle-items').length) {
             response.container.data('pid', response.data.product.id);
@@ -43,7 +40,6 @@ base.subscribe = function () {
                 type: 'post',
                 data: formData,
                 success: function (data) {
-                    console.log(data);
                     $.spinner().stop();
 
                     if (data.error) {
@@ -63,7 +59,7 @@ base.subscribe = function () {
                         );
                         setTimeout(function () {
                             $('.add-to-basket-alert').remove();
-                        }, 1500);
+                        }, 2000);
                     }
                 },
                 error: function () {
