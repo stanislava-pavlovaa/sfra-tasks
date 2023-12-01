@@ -15,6 +15,6 @@
 
     <div class="${product.available ? 'd-none' : ''} mt-3 js-product-subscription">
         <iscontentasset aid="back-in-stock-message" />
-        <isinclude template="product/components/outOfStock" />
+        <isinclude url="${URLUtils.url('ProductSubscription-Show', 'pid', product.id)}" />
     </div>
 </div>

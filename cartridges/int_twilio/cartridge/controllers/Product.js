@@ -5,30 +5,14 @@ server.extend(module.superModule);
 
 var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
 
-server.append("Show", function (req, res, next) {
-    var viewData = res.getViewData();
-
-    var outOfStockForm = server.forms.getForm("outOfStock");
-    outOfStockForm.clear();
-
-    var phone = customer.profile ? customer.profile.phoneHome : "";
-
-    viewData.outOfStockForm = outOfStockForm;
-    viewData.phone = phone;
-
-    res.setViewData(viewData);
-    next();
-});
-
 /**
  * Product-Subscribe : The Product-Subscribe endpoint is the endpoint that gets hit when a shopper has subscribed for Product
- * @name Base/Product-SubscribeProfile
+ * @name Base/Product-Subscribe
  * @function
  * @memberof Product
  * @param {middleware} - server.middleware.https
  * @param {middleware} - csrfProtection.validateAjaxRequest
  * @param {httpparameter} - csrf_token - hidden input field CSRF token
- * @param {category} - sensititve
  * @param {returns} - json
  * @param {serverfunction} - post
  */
