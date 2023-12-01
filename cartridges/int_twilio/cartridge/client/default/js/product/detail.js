@@ -1,14 +1,19 @@
 'use strict';
 var base = require('base/product/detail');
 
+const addToCart = '.add-to-cart';
+const addToCartMessages = '.js-add-to-cart-messages';
+const productSubscription = '.js-product-subscription';
+
 base.updateAttribute = function () {
     $('body').on('product:afterAttributeSelect', function (e, response) {
+        console.log(response)
         if (response.data.product.available) {
-            $('.add-to-cart').removeClass('d-none');
-            $('.product-subscription').addClass('d-none');
+            $(addToCart).removeClass('d-none');
+            $(productSubscription).addClass('d-none');
         } else {
-            $('.add-to-cart').addClass('d-none');
-            $('.product-subscription').removeClass('d-none');
+            $(addToCart).addClass('d-none');
+            $(productSubscription).removeClass('d-none');
         }
 
         $('.subscriptionProductId').val(response.data.product.id);
@@ -43,7 +48,7 @@ base.subscribe = function () {
                     $.spinner().stop();
 
                     if (data.error) {
-                        $('.add-to-cart-messages').append(
+                        $(addToCartMessages).append(
                             '<div class="alert alert-danger add-to-basket-alert text-center"'
                             + ' role="alert">'
                             + data.errorMessage + '</div>'
@@ -52,7 +57,7 @@ base.subscribe = function () {
                             $('.add-to-basket-alert').remove();
                         }, 3000);
                     } else {
-                        $('.add-to-cart-messages').append(
+                        $(addToCartMessages).append(
                             '<div class="alert alert-success add-to-basket-alert text-center"'
                             + ' role="alert">'
                             + data.msgSuccess + '</div>'

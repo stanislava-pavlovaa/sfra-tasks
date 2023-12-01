@@ -13,7 +13,7 @@
         <isinclude template="product/components/addToCartButtonExtension"/>
     </div>
 
-    <div class="${product.available ? 'd-none' : ''} mt-3 product-subscription">
+    <div class="${product.available ? 'd-none' : ''} mt-3 js-product-subscription">
         <iscontentasset aid="back-in-stock-message" />
         <isinclude template="product/components/outOfStock" />
     </div>

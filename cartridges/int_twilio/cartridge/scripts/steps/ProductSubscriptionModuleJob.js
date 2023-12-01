@@ -18,7 +18,6 @@ module.exports.execute = function () {
             var productId = subscriptionObj.custom.productID;
             var phoneNumbers = subscriptionObj.custom.phoneNumbers;
             var product = ProductMgr.getProduct(productId);
-            var productName = ProductMgr.getProduct(productId).name;
 
             if (product.availabilityModel.inStock && phoneNumbers) {
                 phoneNumbers.forEach(customerPhone => {
