@@ -7,7 +7,6 @@ const productSubscription = '.js-product-subscription';
 
 base.updateAttribute = function () {
     $('body').on('product:afterAttributeSelect', function (e, response) {
-        console.log(response)
         if (response.data.product.available) {
             $(addToCart).removeClass('d-none');
             $(productSubscription).addClass('d-none');
@@ -46,24 +45,15 @@ base.subscribe = function () {
                 data: formData,
                 success: function (data) {
                     $.spinner().stop();
-
                     if (data.error) {
-                        $(addToCartMessages).append(
-                            '<div class="alert alert-danger add-to-basket-alert text-center"'
-                            + ' role="alert">'
-                            + data.errorMessage + '</div>'
-                        );
+                        $(addToCartMessages).removeClass('d-none alert-success').addClass('alert-danger').html(data.errorMessage);
                         setTimeout(function () {
-                            $('.add-to-basket-alert').remove();
+                            $(addToCartMessages).addClass('d-none');
                         }, 3000);
                     } else {
-                        $(addToCartMessages).append(
-                            '<div class="alert alert-success add-to-basket-alert text-center"'
-                            + ' role="alert">'
-                            + data.msgSuccess + '</div>'
-                        );
+                        $(addToCartMessages).removeClass('d-none alert-danger').addClass('alert-success').html(data.msgSuccess);
                         setTimeout(function () {
-                            $('.add-to-basket-alert').remove();
+                            $(addToCartMessages).addClass('d-none');
                         }, 2000);
                     }
                 },
