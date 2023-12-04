@@ -1,0 +1,11 @@
+<isif condition="${slotcontent != null}">
+    <div id="hero-slider" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <div class="carousel-inner">
+            <isloop items="${slotcontent.content}" var="contentAsset" status="assetsSt">
+                <div class="carousel-item ${assetsSt.first ? 'active' : ''}">
+                    <isprint value="${contentAsset.custom.body}" encoding="off" />
+                </div>
+            </isloop>
+        </div>
+    </div>
+</isif>

@@ -1,0 +1,51 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/experience/components/commerceAssets/popularCategory.css');
+    assets.addCss('/css/experience/components/commerceAssets/categoryTile.css');
+</isscript>
+
+<div class="mt-2 tile-container">
+    <div class="image-cropper">
+        <a href="${pdict.category.url}">
+            <isif condition="${pdict.image}">
+               <style>
+                    .image-wrapper-${pdict.category.compID} span {
+                        background-image: url('${pdict.image.src.mobile}');
+                        background-repeat: no-repeat;
+                        background-position: center center; 
+                    }
+                    @media (min-width: 768px) {
+                        .image-wrapper-${pdict.category.compID} span {
+                            background-image: url('${pdict.image.src.tablet}');
+                        }
+                    }
+                    @media (min-width: 992px) {
+                        .image-wrapper-${pdict.category.compID} span {
+                            background-image: url('${pdict.image.src.desktop}');
+                        }
+                    }
+                </style>
+                <div class="image-wrapper-${pdict.category.compID} image-wrapper">
+                    <span class="background-image" role="img" aria-label="${pdict.category.description}"> </span>
+                </div> 
+            <iselse>
+                <div class="image-wrapper"
+                    <isif condition="${pdict.category.imageURL}">
+                        style="background-image: url(${pdict.category.imageURL}); background-repeat: no-repeat;
+                        background-position: center center; background-size: cover;"
+                    </isif>
+                 >
+                    <span class="background-image" role="img" aria-label="${pdict.category.name}"></span>
+                </div>
+            </isif>
+        </a>
+    </div>
+
+    <div class="text-center my-1">
+        <span>${pdict.category.description}</span>
+    </div>
+
+    <div class="text-center my-1 cta-link ${pdict.category.ctaPosition == "bottom" ? 'bottom' : 'top'}">
+        <a href="${pdict.category.url}" class="popular-category-label-a popular-cat-link">${pdict.category.ctaTitle}</a>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<div>
+    <p>${product.shortDescription}</p>
+</div>
+
