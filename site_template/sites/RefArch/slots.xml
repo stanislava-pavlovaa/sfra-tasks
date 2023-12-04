@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slot-configurations xmlns="http://www.demandware.com/xml/impex/slot/2008-09-08">
+  
+    <slot-configuration slot-id="home-slider" context="global" configuration-id="home-slider" assigned-to-site="true">
+        <template>slots/content/heroSlider.isml</template>
+        <enabled-flag>true</enabled-flag>
+        <content>
+            <content-assets>
+                <content-asset content-id="hero-slider-image-1"/>
+                <content-asset content-id="hero-slider-image-2"/>
+                <content-asset content-id="hero-slider-image-3"/>
+            </content-assets>
+        </content>
+    </slot-configuration>
+
+    <slot-configuration slot-id="home-categories" context="global" configuration-id="home-categories-guest" assigned-to-site="true">
+        <description>Category tiles for guest users</description>
+        <template>slots/category/categoryTile.isml</template>
+        <enabled-flag>true</enabled-flag>
+        <content>
+            <categories>
+                <category category-id="womens"/>
+                <category category-id="mens"/>
+            </categories>
+        </content>
+        <customer-groups>
+            <customer-group group-id="Unregistered"/>
+        </customer-groups>
+    </slot-configuration>
+
+    <slot-configuration slot-id="home-categories" context="global" configuration-id="home-categories-logged" assigned-to-site="true">
+        <description>Category tiles for registered users</description>
+        <template>slots/category/categoryTile.isml</template>
+        <enabled-flag>false</enabled-flag>
+        <content>
+            <categories>
+                <category category-id="electronics"/>
+                <category category-id="newarrivals"/>
+            </categories>
+        </content>
+        <customer-groups>
+            <customer-group group-id="Registered"/>
+        </customer-groups>
+    </slot-configuration>
+
+    <slot-configuration slot-id="featured-products" context="global" configuration-id="featured-products" assigned-to-site="true">
+        <template>slots/product/homeFeaturedProduct.isml</template>
+        <enabled-flag>true</enabled-flag>
+        <content>
+            <products>
+                <product product-id="008884303989M"/>
+                <product product-id="008885004519M"/>
+                <product product-id="008885535570M"/>
+            </products>
+        </content>
+    </slot-configuration>
+
+   <slot-configuration slot-id="cat-slider" context="category" context-id="electronics" configuration-id="electronics-slider" assigned-to-site="true">
+        <template>slots/content/heroSlider.isml</template>
+        <enabled-flag>true</enabled-flag>
+        <content>
+            <content-assets>
+                <content-asset content-id="buying-guide-digital-camera"/>
+                <content-asset content-id="buying-guide-gps"/>
+                <content-asset content-id="buying-guide-tv"/>
+            </content-assets>
+        </content>
+    </slot-configuration>
+
+</slot-configurations>
