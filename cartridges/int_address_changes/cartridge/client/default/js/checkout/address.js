@@ -11,12 +11,6 @@ var base = require("base/checkout/address");
  * @returns {Object} - the jQuery / DOMElement
  */
 base.methods.optionValueForAddress = function (shipping, selected, order, options) {
-    console.log('address optionValueForAddress')
-    console.log(shipping);
-    console.log(selected);
-    console.log(order);
-    console.log(options);
-
     var safeOptions = options || {};
     var isBilling = safeOptions.type && safeOptions.type === 'billing';
     var className = safeOptions.className || '';
@@ -137,9 +131,6 @@ base.methods.optionValueForAddress = function (shipping, selected, order, option
  * @returns {Object} - a JSON object with all values
  */
 base.methods.getAddressFieldsFromUI = function (form) {
-    console.log('address getAddressFieldsFromUI')
-    console.log(form);
-
     var address = {
         firstName: $('input[name$=_firstName]', form).val(),
         lastName: $('input[name$=_lastName]', form).val(),
@@ -153,7 +144,6 @@ base.methods.getAddressFieldsFromUI = function (form) {
         companyName: $('input[name$=_companyName]', form).val(),
         vat: $('input[name$=_vat]', form).val(),
     };
-    console.log(address)
     return address;
 }
 

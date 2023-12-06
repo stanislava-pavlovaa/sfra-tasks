@@ -1,6 +1,6 @@
 'use strict';
 
-var base = require("base/checkout/billing");
+var base = require("base/checkout/shipping");
 
 /**
  * updates the shipping address form values within shipping forms
@@ -27,9 +27,6 @@ base.methods.updateShippingAddressFormValues = function (shipping) {
 
     addressObject.isGift = shipping.isGift;
     addressObject.giftMessage = shipping.giftMessage;
-
-    console.log('shipping updateShippingAddressFormValues')
-    console.log(shipping)
 
     $('input[value=' + shipping.UUID + ']').each(function (formIndex, el) {
         var form = el.form;
