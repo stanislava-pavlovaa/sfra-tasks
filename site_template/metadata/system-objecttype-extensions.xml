@@ -37,4 +37,37 @@
             </attribute-group>
         </group-definitions>
     </type-extension>
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="reCaptchaSecretKey">
+                <display-name xml:lang="x-default">reCaptcha Secret Key</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="reCaptchaSiteKey">
+                <display-name xml:lang="x-default">reCaptcha Site Key</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="reCaptchaThreshold">
+                <display-name xml:lang="x-default">reCaptcha Threshold</display-name>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+           <attribute-group group-id="reCaptcha Configs">
+                <display-name xml:lang="x-default">reCaptcha Configurations</display-name>
+                <attribute attribute-id="reCaptchaSiteKey"/>
+                <attribute attribute-id="reCaptchaThreshold"/>
+                <attribute attribute-id="reCaptchaSecretKey"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
 </metadata>
