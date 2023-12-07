@@ -8,6 +8,8 @@
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </isif>
 
+<div class="js-reCaptcha-error-message"></div>
+
 <form
     action="${pdict.createAccountUrl}"
     class="js-registration-form registration"
