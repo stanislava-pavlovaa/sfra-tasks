@@ -19,6 +19,8 @@ var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
  * @param {httpparameter} - shipmentSelector - A shipment UUID containing the address that matches the selected address or ab_<address-name-from-address-book>" of the selected address from the address book
  * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_firstName - Input field for the shoppers's first name
  * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_lastName - Input field for the shoppers's last name
+ * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_companyName - Input field for the shoppers's company name
+ * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_vat - Input field for the vat
  * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_address1 - Input field for the shoppers's address 1 - street
  * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_address2 - Input field for the shoppers's address 2 - street
  * @param {httpparameter} - dwfrm_shipping_shippingAddress_addressFields_country -  Input field for the shoppers's address - country

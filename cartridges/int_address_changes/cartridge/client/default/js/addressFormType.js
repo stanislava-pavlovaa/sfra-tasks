@@ -13,11 +13,11 @@ $(document).ready(function() {
         if ($(privateRadioBtn).prop('checked')) {
             $(companyRadioBtn).removeAttr('checked'); 
             $(privateRadioBtn).attr('checked', 'checked');
-            $(businessAddressContainer).removeClass('d-none');
-        } else if ($(companyRadioBtn).prop('checked')) {
+            $(businessAddressContainer).addClass('d-none');
+        } else {
             $(privateRadioBtn).removeAttr('checked'); 
             $(companyRadioBtn).attr('checked', 'checked');
-            $(businessAddressContainer).addClass('d-none');
+            $(businessAddressContainer).removeClass('d-none');
         }
     }
 });
