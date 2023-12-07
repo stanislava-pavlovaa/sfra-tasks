@@ -22,11 +22,13 @@ server.post(
     csrfProtection.validateAjaxRequest,
     function (req, res, next) {
         var Resource = require("dw/web/Resource");
-        var addToCOHelper = require('*/cartridge/scripts/helpers/addToCOHelper');
+        var productSubscriptionHelper = require('~/cartridge/scripts/helpers/productSubscriptionHelper');
+        var OUT_OF_STOCK_SUBSCRIPTION_CO = "OUT_OF_STOCK_SUBSCRIPTION";
+
         var outOfStockForm = server.forms.getForm("outOfStock");
 
         if (outOfStockForm.valid) {
-            var addToCOResponse = addToCOHelper.addToCO(outOfStockForm.productID.value, outOfStockForm.phone.value);
+            var addToCOResponse = productSubscriptionHelper.addToCO(OUT_OF_STOCK_SUBSCRIPTION_CO, outOfStockForm.productID.value, outOfStockForm.phone.value);
 
             if (addToCOResponse.success && addToCOResponse.createdObject) {
                 res.json({

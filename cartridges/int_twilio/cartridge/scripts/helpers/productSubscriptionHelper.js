@@ -1,9 +1,10 @@
-var CustomObjectMgr = require("dw/object/CustomObjectMgr");
 var Transaction = require("dw/system/Transaction");
-var OUT_OF_STOCK_SUBSCRIPTION_CO = "OUT_OF_STOCK_SUBSCRIPTION";
 
-function addToCO(productID, phone) {
-    var subscriptionEntry = CustomObjectMgr.getCustomObject(OUT_OF_STOCK_SUBSCRIPTION_CO, productID);
+var productSubscriptionHelper = require('~/cartridge/scripts/helpers/customObjectHelper.js')
+var twilioService = require("~/cartridge/scripts/twilioService.js");
+
+function addToCO(customObjectType, productID, phone) {
+    var subscriptionEntry = productSubscriptionHelper.getCustomObject(customObjectType, productID);
     var response = {
         createdObject: false,
         phoneExists: false,
@@ -12,7 +13,7 @@ function addToCO(productID, phone) {
 
     Transaction.wrap(function () {
         if (!subscriptionEntry) {
-            subscriptionEntry = CustomObjectMgr.createCustomObject(OUT_OF_STOCK_SUBSCRIPTION_CO, productID);
+            subscriptionEntry = productSubscriptionHelper.createCustomObject(customObjectType, productID);
             subscriptionEntry.custom.phoneNumbers = [phone];
             response.createdObject = true;
             response.success = true;
