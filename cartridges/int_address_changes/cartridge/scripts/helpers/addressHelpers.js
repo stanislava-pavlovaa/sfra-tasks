@@ -103,4 +103,6 @@ base.gatherShippingAddresses = function (order) {
     return allAddresses;
 }
 
+base.updateAddressFields = updateAddressFields;
+
 module.exports = base;

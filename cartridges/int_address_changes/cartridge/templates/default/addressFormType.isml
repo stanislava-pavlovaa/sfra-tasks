@@ -4,10 +4,10 @@
 </isscript>
 
 <div class="form-check form-check-inline mb-3">
-    <input class="form-check-input" type="radio" name="addressType" id="individualRadio" checked>
-    <label class="form-check-label" for="individualRadio">${Resource.msg('label.form.type.private', 'forms', null)}</label>
+    <input class="form-check-input js-private-btn" type="radio" name="addressType" id="privateRadio" checked>
+    <label class="form-check-label" for="privateRadio">${Resource.msg('label.form.type.private', 'forms', null)}</label>
 </div>
 <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="addressType" id="companyRadio">
+    <input class="form-check-input js-company-btn" type="radio" name="addressType" id="companyRadio">
     <label class="form-check-label" for="companyRadio">${Resource.msg('label.form.type.business', 'forms', null)}</label>
 </div>
