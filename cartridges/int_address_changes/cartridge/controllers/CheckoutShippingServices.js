@@ -91,7 +91,7 @@ server.replace('SelectShippingMethod', server.middleware.https, function (req, r
                 shippingAddress.setCountryCode(address.countryCode || '');
                 shippingAddress.setPhone(address.phone || '');
                 shippingAddress.companyName = address.companyName || '';
-                shippingAddress.custom.vat = address.vat || '';
+                shippingAddress.vat = address.vat || '';
 
                 ShippingHelper.selectShippingMethod(shipment, shippingMethodID);
 
