@@ -5,10 +5,9 @@
  */
 
 var server = require('server');
-var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
 
-server.get('Show', server.middleware.https, consentTracking.consent, csrfProtection.generateToken, function (req, res, next) {
+server.get('Show', server.middleware.include, csrfProtection.generateToken, function (req, res, next) {
    
     var outOfStockForm = server.forms.getForm("outOfStock");
     outOfStockForm.clear();
