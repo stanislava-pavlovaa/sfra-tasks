@@ -27,6 +27,66 @@
         </custom-attributes>
     </content>
 
+    <content content-id="home-hero-slider">
+        <display-name xml:lang="x-default">Home Hero Slider</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>false</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;style&gt;&#13;
+                @media (max-width: 543px) {&#13;
+                    .main-callout.slide-1 {&#13;
+                        background-image: url(images/homepage/homepage-4/small.jpg?$staticlink$);&#13;
+                    }&#13;
+                }&#13;
+                @media (max-width: 768px) and (min-width: 544px) {&#13;
+                    .main-callout.slide-1 {&#13;
+                        background-image: url(images/homepage/homepage-4/medium.jpg?$staticlink$);&#13;
+                    }&#13;
+                }&#13;
+                @media (min-width: 992px) {&#13;
+                    .main-callout.slide-1 {&#13;
+                        background-image: url(images/homepage/homepage-4/large.jpg?$staticlink$);&#13;
+                    }&#13;
+                }&#13;
+                &lt;/style&gt;&#13;
+                &lt;div class="hero main-callout slide-1"&gt;&#13;
+                &lt;h1 class="page-title"&gt;Summer Style&lt;/h1&gt;&#13;
+                &lt;/div&gt;
+            </custom-attribute>
+        </custom-attributes>
+    </content>
+
+    <content content-id="home-hero-slider-autumn">
+        <display-name xml:lang="x-default">Home Hero Slider Autumn</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>false</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">&lt;style&gt;&#13;
+                @media (max-width: 543px) {&#13;
+                    .main-callout.slide-2 {&#13;
+                        background-image: url(images/homepage/homepage-1/small.jpg?$staticlink$);&#13;
+                    }&#13;
+                }&#13;
+                @media (max-width: 768px) and (min-width: 544px) {&#13;
+                    .main-callout.slide-2 {&#13;
+                        background-image: url(images/homepage/homepage-1/medium.jpg?$staticlink$);&#13;
+                    }&#13;
+                }&#13;
+                @media (min-width: 992px) {&#13;
+                    .main-callout.slide-2 {&#13;
+                        background-image: url(images/homepage/homepage-1/large.jpg?$staticlink$);&#13;
+                    }&#13;
+                }&#13;
+                &lt;/style&gt;&#13;
+                &lt;div class="hero main-callout slide-2"&gt;&#13;
+                &lt;h1 class="page-title"&gt;Autumn Style&lt;/h1&gt;&#13;
+                &lt;/div&gt;
+            </custom-attribute>
+        </custom-attributes>
+    </content>
+
     <content content-id="product-information">
         <display-name xml:lang="x-default">Product Information</display-name>
         <online-flag>true</online-flag>
