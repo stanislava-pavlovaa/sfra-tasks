@@ -10,7 +10,7 @@
 <div class="col-4 p-0 d-flex">
     <button type="button" id="decrease" class="btn rounded-circle border-secondary"><i class="fa fa-minus text-primary"></i></button>
 
-    <select class="quantity-select custom-select form-control-sm mx-2 border-0 text-center" id="quantity">
+    <select class="quantity-select custom-select form-control-sm mx-2 p-0 border-0 text-center" id="quantity">
         <isloop items="${product.quantities}" var="quantity">
             <option value="${quantity.value}"
                     <isif condition="${product.productType !== 'bundle'}">data-url="${quantity.url}"</isif>
