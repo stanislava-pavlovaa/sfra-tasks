@@ -1,4 +1,19 @@
-<div class="text-right">
-    <a href="${URLUtils.url('Product-SizeChart', 'cid', product.sizeChartId)}" class="text-right">${Resource.msg('link.size_chart', 'product', null)}</a>
+<div class="modal fade" id="sizeChartModal" tabindex="-1" role="dialog" aria-labelledby="sizeChartModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sizeChartModalLabel">${Resource.msg('link.size_chart', 'product', null)}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><i class="fa fa-times"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="size-chart"></div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="size-chart-collapsible mt-5"></div>
+
+<div class="text-right">
+    <a href="${URLUtils.url('Product-SizeChart', 'cid', product.sizeChartId)}" class="size-chart-link" data-toggle="modal" data-target="#sizeChartModal">${Resource.msg('link.view_chart', 'product', null)}</a>
+</div>

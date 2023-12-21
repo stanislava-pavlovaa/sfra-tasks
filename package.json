@@ -114,9 +114,9 @@
     "last 2 versions",
     "ie >= 10"
   ],
-  "packageName": "app_custom_page_designer",
+  "packageName": "app_custom_pdp",
   "paths": {
-  "base": "./cartridges/app_storefront_base/"
+    "base": "./cartridges/app_storefront_base/"
   },
   "babel": {
     "presets": [

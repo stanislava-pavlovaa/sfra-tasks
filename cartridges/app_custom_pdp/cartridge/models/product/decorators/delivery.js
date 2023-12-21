@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function (object, product) {
-    Object.defineProperty(object, 'deliveryInfo', {
+    Object.defineProperty(object, 'deliveryInfoAsset', {
         enumerable: true,
-        value: product.custom.deliveryInfo ? product.custom.deliveryInfo : null
+        value: product.custom.deliveryInfoAsset ? product.custom.deliveryInfoAsset : null
     });
 };

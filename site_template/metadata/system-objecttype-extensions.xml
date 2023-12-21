@@ -14,6 +14,18 @@
                 <externally-defined-flag>false</externally-defined-flag>
                 <min-length>0</min-length>
             </attribute-definition>
+            <attribute-definition attribute-id="deliveryInfoAsset">
+                <display-name xml:lang="x-default">Delivery Information Asset</display-name>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <site-specific-flag>false</site-specific-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <visible-flag>true</visible-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <order-required-flag>false</order-required-flag>
+                <externally-defined-flag>false</externally-defined-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
             <attribute-definition attribute-id="recommendations">
                 <display-name xml:lang="x-default">Product recommendations</display-name>
                 <type>set-of-string</type>
@@ -30,6 +42,7 @@
             <attribute-group group-id="deliveryInfo">
                 <display-name xml:lang="x-default">Delivery Information</display-name>
                 <attribute attribute-id="deliveryInfo"/>
+                <attribute attribute-id="deliveryInfoAsset"/>
             </attribute-group>
             <attribute-group group-id="recommendations">
                 <display-name xml:lang="x-default">Product recommendations</display-name>

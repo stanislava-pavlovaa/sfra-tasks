@@ -14,7 +14,7 @@ var decorators = require('*/cartridge/models/product/decorators/index');
 module.exports = function fullProduct(product, apiProduct, options) {
     base.call(this, product, apiProduct, options);
 
-    decorators.deliveryInfo(product, apiProduct);
+    decorators.deliveryInfoAsset(product, apiProduct);
     decorators.recommendations(product, apiProduct);
 
     return product;

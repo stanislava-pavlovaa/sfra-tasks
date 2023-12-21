@@ -1,5 +1,5 @@
 <div class="row cart-and-ipay mt-3">
-    <div class="col-sm-12">
+    <div class="col-sm-12 p-0">
         <div class="text-sm-right">
             <input type="hidden" class="add-to-cart-url" value="${pdict.addToCartUrl}">
             <button class="add-to-cart btn btn-primary" data-toggle="modal" data-target="#chooseBonusProductModal"
