@@ -36,13 +36,35 @@
             <custom-attribute attribute-id="body" xml:lang="x-default">&lt;p&gt;{shipping}&lt;/p&gt;</custom-attribute>
         </custom-attributes>
     </content>
+
     <content content-id="promotional-message">
         <display-name xml:lang="x-default">Promotional message bellow add to bag button</display-name>
         <online-flag>true</online-flag>
         <searchable-flag>false</searchable-flag>
         <page-attributes/>
         <custom-attributes>
-            <custom-attribute attribute-id="body" xml:lang="x-default">Special offers available</custom-attribute>
+            <custom-attribute attribute-id="body" xml:lang="x-default">
+                &lt;div class="text-right"&gt;&#13;
+                &lt;p class="mt-4 font-weight-bold"&gt;&lt;i class="fa fa-tags"&gt;&lt;/i&gt; Special offers available&lt;/p&gt;&#13;
+                &lt;p class="mt-3"&gt;Free gift when you spend 50€ +&lt;/p&gt;&#13;
+                &lt;/div
+            </custom-attribute>
+        </custom-attributes>
+    </content>
+
+    <content content-id="delivery-info">
+        <display-name xml:lang="x-default">Delivery Information</display-name>
+        <online-flag>true</online-flag>
+        <searchable-flag>false</searchable-flag>
+        <page-attributes/>
+        <custom-attributes>
+            <custom-attribute attribute-id="body" xml:lang="x-default">
+                &lt;p class="font-weight-bold pl-3"&gt;Magic in the details&lt;/h1&gt;&#13;
+                &lt;ul&gt;&#13;
+                    &lt;li&gt;Inspired by Star Wars&lt;/li&gt;&#13;
+                    &lt;li&gt;Matching items available&lt;/li&gt;&#13;
+                &lt;/ul&gt;
+            </custom-attribute>
         </custom-attributes>
     </content>
 </library>
