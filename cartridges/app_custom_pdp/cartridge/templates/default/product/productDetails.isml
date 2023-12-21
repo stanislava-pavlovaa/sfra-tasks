@@ -82,11 +82,11 @@
                     <isloop items="${product.variationAttributes}" var="attr" status="attributeStatus">
                         <isif condition="${attr.id == 'size'}">
                             <div class="row size-area" data-attr="${attr.id}">
-                                <div class="col-8">
+                                <div class="col-8 p-0">
                                     <isinclude template="product/components/variationAttribute" />
                                 </div>
                                 <!-- Size Chart -->
-                                <div class="col-4">
+                                <div class="col-4 p-0">
                                     <isif condition="${product.variationAttributes && product.sizeChartId}">
                                         <div class="size-chart">
                                             <isinclude template="product/components/sizeChart" />
@@ -105,7 +105,7 @@
 
                     <isif condition="${!product.variationAttributes}">
                         <div class="row mt-2 quantity-area">
-                            <div class="col-12">
+                            <div class="col-12 p-0">
                                 <div class="simple-quantity">
                                     <isinclude template="product/components/quantity" />
                                 </div>
@@ -144,9 +144,8 @@
         <isset name="loopState" value="${{count: 1}}" scope="page" />
         <isinclude template="product/components/detailsAndDelivery" />
 
-        <div class="recommendations">
-            <isinclude template="product/components/recommendationsCarousel" />
-        </div>
+        <isinclude template="product/components/recommendationsCarousel" />
+        
     </div>
     </isobject>
 </isdecorate>

@@ -5,13 +5,13 @@
 </isscript>
 
 <isif condition="${product.recommendations.length > 2}">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="text-center carousel-title">${Resource.msg('product.recommendations', 'product', null)}</h3>
-            </div>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-center carousel-title">${Resource.msg('product.recommendations', 'product', null)}</h3>
         </div>
+    </div>
 
+    <div class="container">
         <div class="row">
             <div class="MultiCarousel w-100 position-relative float-left overflow-hidden" data-items="1,3,3,4"
                 data-slide="1" id="MultiCarousel" data-interval="1000">

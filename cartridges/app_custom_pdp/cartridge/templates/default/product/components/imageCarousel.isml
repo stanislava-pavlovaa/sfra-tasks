@@ -1,7 +1,7 @@
 <div class="col-12 col-sm-6 d-flex">
-    <isif condition="${product.images['large'].length > 1}">
-        <ol class="d-flex flex-column mr-3 list-unstyled">
-            <isloop items="${product.images['large']}" var="image" status="loopStatus">
+    <isif condition="${product.images['small'].length > 1}">
+        <ol class="d-none d-sm-flex flex-column mr-3 list-unstyled">
+            <isloop items="${product.images['small']}" var="image" status="loopStatus">
                 <li data-target="${"#"}pdpCarousel-${product.id}" data-slide-to="${loopStatus.index}" class="mt-2">
                     <img src="${image.url}" class="d-block img-fluid" alt="${image.alt} image number ${image.index}" itemprop="image" />
                 </li>
@@ -9,7 +9,7 @@
         </ol>
     </isif>
 
-    <div id="pdpCarousel-${product.id}" class="carousel slide col-8" data-interval="0">
+    <div id="pdpCarousel-${product.id}" class="carousel slide col-8 p-0" data-interval="0">
         <div class="carousel-inner" role="listbox">
             <isloop items="${product.images['large']}" var="image" status="loopStatus">
                 <div class='carousel-item <isif condition="${loopStatus.index == 0}">active</isif>'>

@@ -45,9 +45,9 @@
                 ${attr.displayName}
             </label>
 
-            <select class="size-buttons border-0 overflow-auto select-${attr.id}" multiple>
+            <select class="size-buttons text-wrap border-0 overflow-hidden h-auto select-${attr.id}" multiple>
                 <isloop items="${attr.values}" var="attrValue">
-                    <option value="${attrValue.url}" data-attr-value="${attrValue.value}" class="btn btn-light mr-2">
+                    <option value="${attrValue.url}" data-attr-value="${attrValue.value}" class="btn btn-light mr-2 mt-2">
                         ${attrValue.displayValue}
                     </option>
                 </isloop>
