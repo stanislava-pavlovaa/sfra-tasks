@@ -53,7 +53,7 @@
         <option value="${'ab_'+address.ID}"
                 ${address.ID==shippingModel.matchingAddressId ? 'selected="selected"' : '' }
         data-first-name="${address.firstName||''}" data-last-name="${address.lastName||''}"
-        data-company-name="${address.firstName||''}" data-vat="${address.vat||''}"
+        data-company-name="${address.companyName||''}" data-vat="${address.vat||''}"
         data-address1="${address.address1||''}" data-address2="${address.address2||''}"
         data-city="${address.city||''}" data-state-code="${address.stateCode||''}"
         data-country-code="${address.countryCode.value||''}" data-postal-code="${address.postalCode||''}"
