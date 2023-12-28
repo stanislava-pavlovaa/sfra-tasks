@@ -1,0 +1,15 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addJs('/js/addressFormType.js');
+</isscript>
+
+<div class="mb-3">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input js-private-btn" type="radio" name="addressType" id="privateRadio" checked>
+        <label class="form-check-label" for="privateRadio">${Resource.msg('label.form.type.private', 'forms', null)}</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input js-company-btn" type="radio" name="addressType" id="companyRadio">
+        <label class="form-check-label" for="companyRadio">${Resource.msg('label.form.type.business', 'forms', null)}</label>
+    </div>
+</div>

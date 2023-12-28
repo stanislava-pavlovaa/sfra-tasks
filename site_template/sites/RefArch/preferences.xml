@@ -4,6 +4,9 @@
         <all-instances/>
         <development>
             <preference preference-id="enableChristmasHomepage">christmas-homepage</preference>
+            <preference preference-id="reCaptchaSecretKey">6Lew1yYpAAAAAM952Vjkev5IzETUTLteuK1pXp6V</preference>
+            <preference preference-id="reCaptchaSiteKey">6Lew1yYpAAAAAMbFdpipAP_DMq69nOhAfEFFzO2q</preference>
+            <preference preference-id="reCaptchaThreshold">0.5</preference>
         </development>
         <staging/>
         <production/>

@@ -55,6 +55,10 @@ cartridges/app_custom_pdp/cartridge/static/default/css/
 cartridges/app_custom_pdp/cartridge/static/default/js/
 cartridges/app_custom_pdp/cartridge/static/default/fonts/
 
+cartridges/int_address_changes/cartridge/static/default/css/
+cartridges/int_address_changes/cartridge/static/default/js/
+cartridges/int_address_changes/cartridge/static/default/fonts/
+
 cartridges/dw-api-types/
 cartridges/plugin_interactive_images/
 
