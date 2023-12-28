@@ -202,7 +202,7 @@ server.replace(
                     res.setViewData({ authenticatedCustomer: authenticatedCustomer });
                     res.json({
                         success: true,
-                        redirectUrl: accountHelpers.getLoginRedirectURL(req.querystring.rurl, req.session.privacyCache, true)
+                        successMsg: Resource.msg('registration.success', 'registration', null)
                     });
 
                     req.session.privacyCache.set('args', null);
