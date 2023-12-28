@@ -26,6 +26,9 @@ base.register = function () {
                 } else {
                     $('form.registration').trigger('login:register:success', data);
                     createSuccessNotification($('.error-messaging'), data.successMsg);
+                    setTimeout(function () {
+                        location.href = data.redirectUrl;
+                    }, 3000);
                 }
             },
             error: function (err) {

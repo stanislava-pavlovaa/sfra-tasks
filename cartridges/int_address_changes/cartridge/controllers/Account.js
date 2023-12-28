@@ -5,6 +5,7 @@ server.extend(module.superModule);
 
 var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
+var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 
 /**
  * Account-Login : The Account-Login endpoint will render the shopper's account page. Once a shopper logs in they will see is a dashboard that displays profile, address, payment and order information.
@@ -202,7 +203,8 @@ server.replace(
                     res.setViewData({ authenticatedCustomer: authenticatedCustomer });
                     res.json({
                         success: true,
-                        successMsg: Resource.msg('registration.success', 'registration', null)
+                        successMsg: Resource.msg('registration.success', 'registration', null),
+                        redirectUrl: accountHelpers.getLoginRedirectURL(req.querystring.rurl, req.session.privacyCache, true)
                     });
 
                     req.session.privacyCache.set('args', null);
@@ -251,6 +253,68 @@ server.get('VerifyAccount', server.middleware.https, consentTracking.consent, fu
     next();
 });
 
+/**
+ * Account-DeleteAccount : The Account-DeleteAccount endpoint renders the remove account page. This page allows the shopper to delete their account
+ * @name Base/Account-DeleteAccount
+ * @function
+ * @memberof Account
+ * @param {middleware} - server.middleware.https
+ * @param {middleware} - csrfProtection.generateToken
+ * @param {middleware} - userLoggedIn.validateLoggedIn
+ * @param {middleware} - consentTracking.consent
+ * @param {category} - sensitive
+ * @param {renders} - isml
+ * @param {serverfunction} - get
+ */
+server.get(
+    'DeleteAccount',
+    server.middleware.https,
+    userLoggedIn.validateLoggedIn,
+    consentTracking.consent,
+    function (req, res, next) {
+        var Resource = require('dw/web/Resource');
+        var URLUtils = require('dw/web/URLUtils');
 
+        res.render('account/deleteAccount', {
+            breadcrumbs: [
+                {
+                    htmlValue: Resource.msg('global.home', 'common', null),
+                    url: URLUtils.home().toString()
+                },
+                {
+                    htmlValue: Resource.msg('page.title.myaccount', 'account', null),
+                    url: URLUtils.url('Account-Show').toString()
+                }
+            ]
+        });
+        next();
+    }
+);
+
+/**
+ * Account-RemoveCustomer : The Account-RemoveCustomer deletes shopper's account
+ * @name Base/Account-RemoveCustomer
+ * @function
+ * @memberof Account
+ * @param {category} - sensitive
+ * @param {serverfunction} - get
+ */
+server.get('RemoveCustomer', function (req, res, next) {
+        var CustomerMgr = require('dw/customer/CustomerMgr');
+        var Transaction = require('dw/system/Transaction');
+        var URLUtils = require('dw/web/URLUtils');
+
+        var customer = CustomerMgr.getCustomerByCustomerNumber(
+            req.currentCustomer.profile.customerNo
+        );
+
+        Transaction.wrap(function () {
+            CustomerMgr.removeCustomer(customer);
+        });
+
+        res.redirect(URLUtils.url('Home-Show'));
+        next();
+    }
+);
 
 module.exports = server.exports();
