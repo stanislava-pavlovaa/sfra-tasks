@@ -1,0 +1,11 @@
+{
+    "step-types": {
+        "script-module-step": [
+            {
+                "@type-id": "custom.TwilioProductSubscriptionStep",
+                "description": "Script for sending a notification when the product is back in stock",
+                "module": "int_twilio/cartridge/scripts/steps/ProductSubscriptionModuleJob"
+            }
+        ]
+    }
+}

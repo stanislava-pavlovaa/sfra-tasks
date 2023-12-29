@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+    <field 
+        formid="phone" 
+        label="label.input.phone.subscribe" 
+        type="string" 
+        mandatory="true"
+        min-length="10" 
+        max-length="20" 
+        missing-error="error.card.info.missing.phone" 
+        range-error="error.message.between10and20" 
+		parse-error="error.message.parse.phone.profile.form"
+        regexp="^\+\d+[\d\s\(\)\-]+$"  />
+
+    <field 
+        formid="productID" 
+        type="string" 
+        mandatory="true" />
+</form>

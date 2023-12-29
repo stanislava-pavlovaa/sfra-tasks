@@ -1,0 +1,20 @@
+<isinclude template="/components/modules" />
+<div class="row cart-and-ipay">
+    <div class="col-sm-12 ${!product.available ? 'd-none' : ''}">
+        <input type="hidden" class="add-to-cart-url" value="${pdict.addToCartUrl}">
+        <button class="add-to-cart btn btn-primary"
+                data-toggle="modal" data-target="#chooseBonusProductModal"
+                data-pid="${product.id}"
+                ${!product.readyToOrder || !product.available ? "disabled" : ""}>
+            <i class="fa fa-shopping-bag"></i>
+            ${Resource.msg('button.addtocart', 'common', null)}
+        </button>
+
+        <isinclude template="product/components/addToCartButtonExtension"/>
+    </div>
+
+    <div class="${product.available ? 'd-none' : ''} mt-3 js-product-subscription">
+        <iscontentasset aid="back-in-stock-message" />
+        <isinclude url="${URLUtils.url('ProductSubscription-Show', 'pid', product.id)}" />
+    </div>
+</div>

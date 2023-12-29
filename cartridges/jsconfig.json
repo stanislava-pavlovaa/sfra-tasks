@@ -4,14 +4,14 @@
         "target": "es5",
         "baseUrl": "./",
         "paths": {
-            "*": ["./*", "modules/*", "/path/to/dw-api-types/*"]
+            "*" : ["./*", "modules/*", "dw-api-types/*"]
         }
     },
     "typeAcquisition": {
         "enable": true
     },
     "include": [
-        "/path/to/dw-api-types/**/*.d.ts",
+        "dw-api-types/**/*.d.ts",
         "./*/cartridge/scripts/**/*.js",
         "./*/cartridge/controllers/**/*.js",
         "./modules/**/*.js"
