@@ -1,6 +1,5 @@
-<div class="js-add-to-cart-messages alert add-to-basket-alert text-center d-none mt-3"></div>
 <div class="mt-3">
-    <form action="${URLUtils.url('Product-Subscribe')}" class="subscriptionForm row" method="POST" encoding="off" <isprint value="${pdict.outOfStockForm.attributes}"/>>
+    <form action="${URLUtils.url('Product-Subscribe')}" class="js-subscriptionForm row" method="POST" encoding="off" <isprint value="${pdict.outOfStockForm.attributes}"/>>
         <div class="form-group required col-sm-8">
             <input 
                 type="tel" 

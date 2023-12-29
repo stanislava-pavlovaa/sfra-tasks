@@ -14,7 +14,9 @@
     </div>
 
     <div class="${product.available ? 'd-none' : ''} mt-3 js-product-subscription">
+        <div class="js-add-to-cart-messages alert add-to-basket-alert text-center d-none mt-3"></div>
         <iscontentasset aid="back-in-stock-message" />
         <isinclude url="${URLUtils.url('ProductSubscription-Show', 'pid', product.id)}" />
+        <isinclude url="${URLUtils.url('ProductSubscription-PhoneVerification', 'pid', product.id)}" />
     </div>
 </div>

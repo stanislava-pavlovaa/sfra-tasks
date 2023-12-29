@@ -1,10 +1,8 @@
 "use strict";
 
 var LocalServiceRegistry = require("dw/svc/LocalServiceRegistry");
-var StringUtils = require('dw/util/StringUtils');
-var Resource = require('dw/web/Resource');
 
-function subscribe(customerPhone, twilioPhone, productName) {
+function subscribe(customerPhone, twilioPhone, message) {
     var service = LocalServiceRegistry.createService("http.twilio.service", {
         createRequest: function (svc, args) {
             svc.setRequestMethod("POST");
@@ -21,7 +19,6 @@ function subscribe(customerPhone, twilioPhone, productName) {
         },
     });
 
-    var message = StringUtils.format(Resource.msg('product.in.stock', 'subscription', null), productName)
     var requestBody = `To=${customerPhone}&From=${twilioPhone}&Body=${message}`;
     var response = service.call(requestBody).object
 

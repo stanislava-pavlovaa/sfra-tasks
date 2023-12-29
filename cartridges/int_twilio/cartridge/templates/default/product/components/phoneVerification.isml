@@ -1,0 +1,24 @@
+<div class="mt-3">
+    <form action="${URLUtils.url('Product-VerifyPhone')}" class="js-phone-verification row d-none" method="POST" encoding="off" <isprint value="${pdict.phoneVerificationForm.attributes}"/>>
+        <div class="form-group required col-sm-8">
+            <input 
+                type="text" 
+                id="code" 
+                class="form-control required" 
+                placeholder="Enter verification code"
+                required
+                aria-required="true" 
+                <isprint value="${pdict.phoneVerificationForm.verificationCode.attributes}" encoding="off"/>>
+            <div class="invalid-feedback"></div>
+        </div>
+
+        <input type="hidden" id="productID" class="verificationProductId" value="${pdict.productId}" <isprint
+            value="${pdict.phoneVerificationForm.productID.attributes}" encoding="off" />>
+
+        <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+
+        <div class="col-sm-4">
+            <button type="submit" name="save" class="btn btn-save btn-success">Enter code</button>
+        </div>
+    </form>
+</div>
