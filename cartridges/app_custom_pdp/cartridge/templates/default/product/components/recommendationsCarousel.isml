@@ -1,0 +1,32 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets');
+    assets.addJs('/js/recommendationsCarousel.js');
+</isscript>
+
+<isif condition="${JSON.stringify(product.recommendations).length > 2}">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-center carousel-title">${Resource.msg('product.recommendations', 'product', null)}</h3>
+        </div>
+    </div>
+
+    <div id="recommendationsCarousel" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner w-100 d-flex align-self-stretch" role="listbox">
+            <isloop items="${product.recommendations}" var="recommendation" status="loopStatus">
+                <div class="carousel-item ${loopStatus.first ? 'active' : ''}">
+                    <div class="col-3">
+                        <isinclude url="${URLUtils.url('Tile-Show', 'pid', recommendation, 'swatches', false, 'ratings', true, 'showQuickView', false)}" />
+                    </div>
+                </div>
+            </isloop>
+        </div>
+        <a class="carousel-control-prev" href="#recommendationsCarousel" role="button" data-slide="prev">
+            <span class="fa icon-prev" aria-hidden="true"></span>
+            <span class="sr-only">${Resource.msg('carousel.buttton.prev', 'product', null)}</span>
+        </a>
+        <a class="carousel-control-next" href="#recommendationsCarousel" role="button" data-slide="next">
+            <span class="fa icon-next" aria-hidden="true"></span>
+            <span class="sr-only">${Resource.msg('carousel.buttton.next', 'product', null)}</span>
+        </a>
+    </div>
+</isif>
