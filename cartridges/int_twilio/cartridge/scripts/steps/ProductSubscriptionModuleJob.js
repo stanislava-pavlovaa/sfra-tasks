@@ -2,6 +2,7 @@ var CustomObjectMgr = require('dw/object/CustomObjectMgr');
 var ProductMgr = require('dw/catalog/ProductMgr');
 var Transaction = require('dw/system/Transaction');
 var Resource = require('dw/web/Resource');
+var StringUtils = require('dw/util/StringUtils');
 var Logger = require('dw/system/Logger');
 var Site = require('dw/system/Site');
 
@@ -21,10 +22,11 @@ module.exports.execute = function () {
 
             if (product.availabilityModel.inStock && phoneNumbers) {
                 phoneNumbers.forEach(customerPhone => {
-                    response = twilioService.subscribe(customerPhone, twilioPhone, product.name);
+                    var message = StringUtils.format(Resource.msg('product.in.stock', 'subscription', null), product.name)
+                    response = twilioService.subscribe(customerPhone, twilioPhone, message);
                 });
                 
-                if (response) {
+                if (response.ok) {
                     try {
                         Transaction.wrap(function () {
                             CustomObjectMgr.remove(subscriptionObj);

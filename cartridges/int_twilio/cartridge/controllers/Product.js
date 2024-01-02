@@ -4,6 +4,7 @@ var server = require("server");
 server.extend(module.superModule);
 
 var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
+var productSubscriptionHelper = require('~/cartridge/scripts/helpers/productSubscriptionHelper');
 
 /**
  * Product-Subscribe : The Product-Subscribe endpoint is the endpoint that gets hit when a shopper has subscribed for Product
@@ -12,7 +13,6 @@ var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
  * @memberof Product
  * @param {middleware} - server.middleware.https
  * @param {middleware} - csrfProtection.validateAjaxRequest
- * @param {httpparameter} - csrf_token - hidden input field CSRF token
  * @param {returns} - json
  * @param {serverfunction} - post
  */
@@ -21,44 +21,41 @@ server.post(
     server.middleware.https,
     csrfProtection.validateAjaxRequest,
     function (req, res, next) {
-        var Resource = require("dw/web/Resource");
-        var productSubscriptionHelper = require('~/cartridge/scripts/helpers/productSubscriptionHelper');
-        var OUT_OF_STOCK_SUBSCRIPTION_CO = "OUT_OF_STOCK_SUBSCRIPTION";
+        var Site = require('dw/system/Site');
 
         var outOfStockForm = server.forms.getForm("outOfStock");
 
-        if (outOfStockForm.valid) {
-            var addToCOResponse = productSubscriptionHelper.addToCO(OUT_OF_STOCK_SUBSCRIPTION_CO, outOfStockForm.productID.value, outOfStockForm.phone.value);
+        var phone = outOfStockForm.phone.value;
+        var productId = outOfStockForm.productID.value;
+        var twilioPhone = Site.getCurrent().getCustomPreferenceValue("twilioPhoneNumber");
+        var response = productSubscriptionHelper.handleSubscribeRequest(outOfStockForm, productId, phone, twilioPhone);
 
-            if (addToCOResponse.success && addToCOResponse.createdObject) {
-                res.json({
-                    success: true,
-                    error: false,
-                    msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
-                })
-            }  else if (addToCOResponse.success && !addToCOResponse.phoneExists) {
-                res.json({
-                    success: true,
-                    error: false,
-                    msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
-                })
-            } else if(!addToCOResponse.success && addToCOResponse.phoneExists){
-                res.json({
-                    success: false,
-                    error:true,
-                    errorMessage: Resource.msg('error.message.already.subscribed', 'subscription', null)
-                })
-            }
-        } else {
-            res.json({
-                    success: false,
-                    error: true,
-                    errorMessage: Resource.msg('error.message.invalid.phone', 'subscription', null)
-            });
-        }
+        res.json(response);
 
         return next();
     }
 );
+
+/**
+ * Product-VerifyPhone : The Product-VerifyPhone endpoint is the endpoint that gets hit when a shopper has verified his phone
+ * @name Base/Product-VerifyPhone
+ * @function
+ * @memberof Product
+ * @param {middleware} - server.middleware.https
+ * @param {middleware} - csrfProtection.validateAjaxRequest
+ * @param {returns} - json
+ * @param {serverfunction} - post
+ */
+server.post("VerifyPhone", server.middleware.https, csrfProtection.validateAjaxRequest, function (req, res, next) {
+    var phoneVerificationForm = server.forms.getForm("phoneVerification");
+
+    var code = phoneVerificationForm.verificationCode.value;
+    var productId = phoneVerificationForm.productID.value;
+    var response = productSubscriptionHelper.handlePhoneVerificationRequest(code, productId);
+
+    res.json(response);
+
+    return next();
+});
 
 module.exports = server.exports();

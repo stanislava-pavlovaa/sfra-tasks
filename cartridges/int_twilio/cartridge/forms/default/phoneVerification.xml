@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+    <field 
+        formid="verificationCode" 
+        label="label.input.verification.code" 
+        type="string" 
+        mandatory="true"
+		missing-error="error.message.required"
+		parse-error="error.message.parse.phone.profile.form" />
+
+    <field 
+        formid="productID" 
+        type="string" 
+        mandatory="true" />
+</form>
