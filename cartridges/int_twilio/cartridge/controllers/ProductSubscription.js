@@ -12,7 +12,7 @@ var csrfProtection = require("*/cartridge/scripts/middleware/csrf");
  * @name Base/ProductSubscription-Show
  * @function
  * @memberof ProductSubscription
- * @param {middleware} - server.middleware.https
+ * @param {middleware} - server.middleware.include
  * @param {httpparameter} - csrf_token - hidden input field CSRF token
  * @param {returns} - isml
  * @param {serverfunction} - get
@@ -38,7 +38,7 @@ server.get('Show', server.middleware.include, csrfProtection.generateToken, func
  * @name Base/ProductSubscription-PhoneVerification
  * @function
  * @memberof ProductSubscription
- * @param {middleware} - server.middleware.https
+ * @param {middleware} - server.middleware.include
  * @param {httpparameter} - csrf_token - hidden input field CSRF token
  * @param {returns} - isml
  * @param {serverfunction} - get

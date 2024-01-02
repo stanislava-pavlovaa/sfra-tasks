@@ -26,7 +26,7 @@ module.exports.execute = function () {
                     response = twilioService.subscribe(customerPhone, twilioPhone, message);
                 });
                 
-                if (response) {
+                if (response.ok) {
                     try {
                         Transaction.wrap(function () {
                             CustomObjectMgr.remove(subscriptionObj);

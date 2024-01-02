@@ -20,7 +20,7 @@ function subscribe(customerPhone, twilioPhone, message) {
     });
 
     var requestBody = `To=${customerPhone}&From=${twilioPhone}&Body=${message}`;
-    var response = service.call(requestBody).object
+    var response = service.call(requestBody);
 
     return response;
 }

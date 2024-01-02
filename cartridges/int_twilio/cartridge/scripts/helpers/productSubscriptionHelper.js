@@ -8,13 +8,15 @@ var twilioService = require("~/cartridge/scripts/twilioService.js");
 var OUT_OF_STOCK_SUBSCRIPTION_CO = "OUT_OF_STOCK_SUBSCRIPTION";
 var PHONE_VERIFICATION_CO = 'PHONE_VERIFICATION';
 
-function addToCO(customObjectType, productID, phone) {
+function addToOutOfStockCO(customObjectType, productID, phone) {
     var subscriptionEntry = productSubscriptionHelper.getCustomObject(customObjectType, productID);
     var response = {
         createdObject: false,
         phoneExists: false,
         success: false,
     };
+
+    var isPhoneExisting = isPhoneNumberExisting(OUT_OF_STOCK_SUBSCRIPTION_CO, productID, phone);
 
     Transaction.wrap(function () {
         if (!subscriptionEntry) {
@@ -25,7 +27,7 @@ function addToCO(customObjectType, productID, phone) {
         } else {
             var phoneNumbersArray = Array.from(subscriptionEntry.custom.phoneNumbers);
     
-            if (phoneNumbersArray.includes(phone)) {
+            if (isPhoneExisting) {
                response.phoneExists = true;
                response.success = false;
             } else {
@@ -49,12 +51,11 @@ function isPhoneNumberVerified(phoneNumber) {
     return iteratorOfSubscriptions.count > 0;
 };
 
-function isPhoneNumberExisting (productID, phoneNumber) {
-    var subscriptionEntry = productSubscriptionHelper.getCustomObject(PHONE_VERIFICATION_CO, productID);
+function isPhoneNumberExisting (customObject, productID, phoneNumber) {
+    var subscriptionEntry = productSubscriptionHelper.getCustomObject(customObject, productID);
 
     return subscriptionEntry ? subscriptionEntry.custom.phoneNumbers.includes(phoneNumber) : false;
 };
-
 
 function saveVerificationCode(phoneNumber) {
     var UUIDUtils = require("dw/util/UUIDUtils");
@@ -94,7 +95,7 @@ function handleSubscribeRequest(form, productId, phone, twilioPhone) {
     var isPhoneVerified = isPhoneNumberVerified(phone);
 
     if (isPhoneVerified) {
-        var addToCOResponse = addToCO(OUT_OF_STOCK_SUBSCRIPTION_CO, productId, phone);
+        var addToCOResponse = addToOutOfStockCO(OUT_OF_STOCK_SUBSCRIPTION_CO, productId, phone);
 
         if (addToCOResponse.success && (addToCOResponse.createdObject || !addToCOResponse.phoneExists)) {
             return {
@@ -115,7 +116,7 @@ function handleSubscribeRequest(form, productId, phone, twilioPhone) {
         var message = StringUtils.format(Resource.msg('verification.code.message', 'subscription', null), verificationCode);
         var response = twilioService.subscribe(phone, twilioPhone, message);
 
-        if (response) {
+        if (response.ok) {
             return {
                 showPhoneVerificationForm: true,
                 success: true,
@@ -151,10 +152,10 @@ function handlePhoneVerificationRequest(code, productId) {
         }
 
         var phoneNumber = verificationCodeEntry.custom.phoneNumbers;
-        var isPhoneExisting = isPhoneNumberExisting(productId, phoneNumber);
+        var isPhoneExisting = isPhoneNumberExisting(PHONE_VERIFICATION_CO, productId, phoneNumber);
 
         if (!isPhoneExisting){
-            addToCO(OUT_OF_STOCK_SUBSCRIPTION_CO, productId, phoneNumber)
+            addToOutOfStockCO(OUT_OF_STOCK_SUBSCRIPTION_CO, productId, phoneNumber)
         }
 
         Transaction.wrap(function () {
@@ -167,9 +168,10 @@ function handlePhoneVerificationRequest(code, productId) {
             msgSuccess: Resource.msg('success.message.subscribed', 'subscription', null)
         };
     }
+
     return {
         success: false,
-        error: false,
+        error: true,
         errorMessage: Resource.msg(
             "error.message.enter.valid.code",
             "subscription",
